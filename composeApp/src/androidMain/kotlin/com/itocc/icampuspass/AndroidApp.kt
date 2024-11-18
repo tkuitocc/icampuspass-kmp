@@ -9,7 +9,7 @@ class AndroidApp: Application() {
         super.onCreate()
 
         initKoin(
-            listOf(
+            extraModules = listOf(
                 module {}
             )
         )

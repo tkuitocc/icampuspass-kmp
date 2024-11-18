@@ -30,10 +30,10 @@ kotlin {
     sourceSets {
         all {
             // Required by KMP-NativeCoroutines
-            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
+            languageSettings.optIn(annotationName = "kotlin.experimental.ExperimentalObjCName")
 
             // Required by KMP-ObservableViewModel
-            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+            languageSettings.optIn(annotationName = "kotlinx.cinterop.ExperimentalForeignApi")
         }
         commonMain.dependencies {
             // put your Multiplatform dependencies here
