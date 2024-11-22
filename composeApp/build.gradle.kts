@@ -16,9 +16,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
     sourceSets {
-        
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
@@ -30,6 +28,9 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(libs.compose.material3)
+            implementation(libs.compose.material3.adaptivenavigationsuite)
+            implementation(libs.compose.material3.windowsizeclass)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(projects.shared)
@@ -40,7 +41,6 @@ kotlin {
 android {
     namespace = "com.itocc.icampuspass"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
-
     defaultConfig {
         applicationId = "com.itocc.icampuspass"
         minSdk = libs.versions.android.minSdk.get().toInt()
