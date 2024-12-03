@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.kmpNativeCoroutines)
     alias(libs.plugins.kotlinMultiplatform)
 }
 
@@ -26,6 +27,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             // put your Multiplatform dependencies here
+            implementation(libs.koin.core)
         }
     }
 }
