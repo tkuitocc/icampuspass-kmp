@@ -15,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import icampuspass.composeapp.generated.resources.Res
 import icampuspass.composeapp.generated.resources.compose_multiplatform
@@ -24,14 +25,14 @@ import org.jetbrains.compose.resources.painterResource
 @Composable
 fun App() {
     MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
+        var showContent by remember { mutableStateOf(value = false) }
 
         Column(
             modifier = Modifier.fillMaxWidth().safeDrawingPadding(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Button(onClick = { showContent = !showContent }) {
-                Text(text = "Click me!")
+                Text(text = stringResource(id = R.string.click_me))
             }
 
             AnimatedVisibility(visible = showContent) {
