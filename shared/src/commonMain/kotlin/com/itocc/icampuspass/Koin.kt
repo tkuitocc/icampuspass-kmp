@@ -12,8 +12,41 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 val commonModule: Module = module {
+    single<AppRepository> {
+        AppRepository(greeting = get()).apply {
+            init()
+        }
+    }
+
     single<DatabaseHelper> {
         DatabaseHelper(driverFactory = get())
+    }
+
+    single<Greeting> {
+        Greeting(platform = get())
+    }
+
+    single<HttpClient> {
+        HttpClient {
+            install(plugin = ContentNegotiation) {
+                json(
+                    json = get(),
+                    contentType = ContentType.Any
+                )
+            }
+
+            install(plugin = HttpCookies)
+        }
+    }
+
+    single<Json> {
+        Json {
+            ignoreUnknownKeys = true
+        }
+    }
+
+    single<Platform> {
+        getPlatform()
     }
 }
 

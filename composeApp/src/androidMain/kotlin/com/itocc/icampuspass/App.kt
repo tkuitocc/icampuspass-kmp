@@ -16,14 +16,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.itocc.icampuspass.viewmodels.MainViewModel
 import icampuspass.composeapp.generated.resources.Res
 import icampuspass.composeapp.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.painterResource
+import org.koin.androidx.compose.koinViewModel
 
 @Preview
 @Composable
 fun App() {
     MaterialTheme {
+        val viewModel: MainViewModel = koinViewModel<MainViewModel>()
+
         var showContent by remember { mutableStateOf(value = false) }
 
         Column(
@@ -35,7 +39,7 @@ fun App() {
             }
 
             AnimatedVisibility(visible = showContent) {
-                val greeting = remember { Greeting().greet() }
+                val greeting = remember { KoinDependencies().greeting.greet() }
 
                 Column(
                     modifier = Modifier.fillMaxWidth(),
