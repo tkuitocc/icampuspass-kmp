@@ -24,7 +24,7 @@ import org.jetbrains.compose.resources.painterResource
 @Composable
 fun App() {
     MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
+        var showContent by remember { mutableStateOf(value = false) }
 
         Column(
             modifier = Modifier.fillMaxWidth().safeDrawingPadding(),

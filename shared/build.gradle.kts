@@ -35,10 +35,19 @@ kotlin {
             // Required by KMP-ObservableViewModel
             languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
         }
+        androidMain.dependencies {
+            implementation(libs.ktor.client.okhttp)
+        }
         commonMain.dependencies {
             // put your Multiplatform dependencies here
             api(libs.kmp.observable.viewmodel)
             implementation(libs.koin.core)
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
         }
     }
 }
