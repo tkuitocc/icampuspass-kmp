@@ -1,1 +1,64 @@
 PRAGMA user_version = 1;
+
+CREATE TABLE account (
+    account_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    account_user_id INTEGER NOT NULL,
+    account_type INTEGER NOT NULL,
+    FOREIGN KEY (account_user_id) REFERENCES user(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE class_timetable_item (
+    cti_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    cti_user_id INTEGER NOT NULL,
+    cti_session INTEGER NOT NULL,
+    cti_course_id INTEGER NOT NULL,
+    cti_location TEXT NOT NULL,
+    cti_instructor TEXT NOT NULL,
+    FOREIGN KEY (cti_user_id) REFERENCES user(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (cti_course_id) REFERENCES course(course_id) ON DELETE CASCADE
+);
+
+CREATE TABLE course (
+    course_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    course_unit INTEGER NOT NULL,
+    course_code TEXT NOT NULL
+);
+
+CREATE TABLE course_title (
+    ct_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ct_course_id INTEGER NOT NULL,
+    ct_lang INTEGER NOT NULL,
+    ct_text TEXT NOT NULL,
+    FOREIGN KEY (ct_course_id) REFERENCES course(course_id) ON DELETE CASCADE
+);
+
+CREATE TABLE token (
+    token_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    token_account_id INTEGER NOT NULL,
+    token_type INTEGER NOT NULL,
+    token_value TEXT NOT NULL,
+    FOREIGN KEY (token_account_id) REFERENCES account(account_id) ON DELETE CASCADE
+);
+
+CREATE TABLE user (
+    user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_unit INTEGER NOT NULL,
+    user_code TEXT NOT NULL
+);
+
+CREATE TABLE user_display_name (
+    udn_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    udn_user_id INTEGER NOT NULL,
+    udn_lang INTEGER NOT NULL,
+    udn_text TEXT NOT NULL,
+    FOREIGN KEY (udn_user_id) REFERENCES user(user_id) ON DELETE CASCADE
+);
+
+selectAllClassTimetableItemsInLang:
+    SELECT *
+    FROM class_timetable_item
+    INNER JOIN course
+    ON class_timetable_item.cti_course_id = course.course_id
+    INNER JOIN course_title
+    ON course_title.ct_course_id = course_id
+    AND course_title.ct_lang = :lang;

@@ -1,5 +1,7 @@
 package app.icampuspass.models.database
 
+import app.cash.sqldelight.db.SqlDriver
+
 class DatabaseHelper(
     private val driverFactory: DriverFactory
 ) {
@@ -9,5 +11,7 @@ class DatabaseHelper(
 
     private val driver = driverFactory.createDriver()
 
-    private val database = Database(driver)
+    private val database: Database = Database(driver)
+
+    private val databaseQueries: DatabaseQueries = database.databaseQueries
 }
