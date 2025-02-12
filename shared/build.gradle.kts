@@ -24,7 +24,9 @@ kotlin {
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "Shared"
-            isStatic = true
+
+            // Changed from true to false, required by SQLDelight
+            isStatic = false
         }
     }
     sourceSets {
@@ -35,10 +37,22 @@ kotlin {
             // Required by KMP-ObservableViewModel
             languageSettings.optIn(annotationName = "kotlinx.cinterop.ExperimentalForeignApi")
         }
+        androidMain.dependencies {
+            implementation(libs.ktor.client.okhttp)
+            implementation(libs.sqldelight.android)
+        }
         commonMain.dependencies {
             // put your Multiplatform dependencies here
             api(libs.kmp.observable.viewmodel)
             implementation(libs.koin.core)
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.sqldelight.runtime)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
+            implementation(libs.sqldelight.native)
         }
     }
 }
@@ -52,5 +66,14 @@ android {
     }
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
+    }
+}
+
+sqldelight {
+    databases {
+        create(name = "Database") {
+            packageName.set("com.itocc.icampuspass.database")
+            generateAsync.set(true)
+        }
     }
 }
