@@ -12,4 +12,6 @@ class DatabaseHelper(
     private val driver = driverFactory.createDriver()
 
     private val database: Database = Database(driver)
+
+    private val databaseQueries: DatabaseQueries = database.databaseQueries
 }
