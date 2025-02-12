@@ -29,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Wallpapers.YELLOW_DOMINATED_EXAMPLE
 import app.icampuspass.Greeting
 import app.icampuspass.composeapp.generated.resources.Res
 import app.icampuspass.composeapp.generated.resources.compose_multiplatform
+import app.icampuspass.getPlatform
 import app.icampuspass.viewmodels.MainViewModel
 import app.icampuspass.views.theme.Theme
 import org.jetbrains.compose.resources.painterResource
@@ -37,10 +38,14 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun GreetingScreen(
     viewModel: MainViewModel = koinViewModel()
-) = GreetingScreenContent()
+) = GreetingScreenContent(
+    greeting = remember { viewModel.getGreeting().greet() }
+)
 
 @Composable
-private fun GreetingScreenContent() {
+private fun GreetingScreenContent(
+    greeting: String
+) {
     var showContent by remember { mutableStateOf(value = false) }
 
     Column(
@@ -55,8 +60,6 @@ private fun GreetingScreenContent() {
         }
 
         AnimatedVisibility(visible = showContent) {
-            val greeting = remember { Greeting().greet() }
-
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -100,6 +103,8 @@ private fun GreetingScreenContent() {
 @Composable
 private fun GreetingScreenPreview() {
     Theme {
-        GreetingScreenContent()
+        GreetingScreenContent(
+            greeting = remember { Greeting(platform = getPlatform()).greet() }
+        )
     }
 }
