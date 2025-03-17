@@ -1,0 +1,41 @@
+PRAGMA user_version = 1;
+
+CREATE TABLE account (
+    account_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    account_user_id INTEGER NOT NULL,
+    FOREIGN KEY (account_user_id) REFERENCES user(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE session (
+    session_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    session_title_id INTEGER NOT NULL,
+    session_user_id INTEGER NOT NULL,
+    FOREIGN KEY (session_title_id) REFERENCES session_title(st_id) ON DELETE CASCADE,
+    FOREIGN KEY (session_user_id) REFERENCES user(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE session_title (
+    st_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    st_lang_id INTEGER NOT NULL,
+    st_text TEXT NOT NULL
+);
+
+CREATE TABLE token (
+    token_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    token_type_id INTEGER NOT NULL,
+    token_account_id INTEGER NOT NULL,
+    FOREIGN KEY (token_account_id) REFERENCES account(account_id) ON DELETE CASCADE
+);
+
+CREATE TABLE user (
+    user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_dn_id INTEGER NOT NULL,
+    user_unit_id INTEGER NOT NULL,
+    FOREIGN KEY (user_dn_id) REFERENCES user_display_name(udn_id) ON DELETE CASCADE
+);
+
+CREATE TABLE user_display_name (
+    udn_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    udn_lang_id INTEGER NOT NULL,
+    udn_text TEXT NOT NULL
+);
