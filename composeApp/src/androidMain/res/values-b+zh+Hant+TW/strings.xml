@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">i校園通</string>
+    <string name="top_app_bar_title">%1$s校園通</string>
+    <string name="top_app_bar_title_unit_tku">淡江</string>
+    <string name="navigate_back">返回</string>
+    <string name="menu_title">選單</string>
+    <string name="menu_action_open">開啟選單</string>
+    <string name="menu_action_close">關閉選單</string>
+    <string name="menu_item_main">首頁</string>
+    <string name="menu_item_settings">設定</string>
+    <string name="menu_item_about">關於</string>
+    <string name="user_dialog_footer_privacy_policy">隱私權政策</string>
+    <string name="about_app">關於%1$s</string>
+    <string name="app_version">版本%1$s</string>
 </resources>
