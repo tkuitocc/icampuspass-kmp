@@ -1,13 +1,18 @@
 package com.itocc.icampuspass
 
+import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -20,14 +25,19 @@ import icampuspass.composeapp.generated.resources.Res
 import icampuspass.composeapp.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.painterResource
 
-@Preview
 @Composable
 fun App() {
-    MaterialTheme {
-        var showContent by remember { mutableStateOf(value = false) }
+    MaterialTheme(
+        colorScheme = if (isSystemInDarkTheme()) {
+            darkColorScheme()
+        } else {
+            lightColorScheme()
+        }
+    ) {
+        var showContent: Boolean by remember { mutableStateOf(value = false) }
 
         Column(
-            modifier = Modifier.fillMaxWidth().safeDrawingPadding(),
+            modifier = Modifier.fillMaxSize().safeDrawingPadding(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Button(onClick = { showContent = !showContent }) {
@@ -35,7 +45,7 @@ fun App() {
             }
 
             AnimatedVisibility(visible = showContent) {
-                val greeting = remember { Greeting().greet() }
+                val greeting: String = remember { Greeting().greet() }
 
                 Column(
                     modifier = Modifier.fillMaxWidth(),
@@ -51,4 +61,19 @@ fun App() {
             }
         }
     }
+}
+
+@Preview(
+    showSystemUi = true,
+    showBackground = true
+)
+@Preview(
+    showSystemUi = true,
+    backgroundColor = 0xFF000000,
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true
+)
+@Composable
+fun AppPreview() {
+    App()
 }
