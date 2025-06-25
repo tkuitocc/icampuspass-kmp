@@ -8,6 +8,7 @@ class AndroidApp: Application() {
         super.onCreate()
 
         initKoin(
+            androidContext = this@AndroidApp,
             extraModules = listOf(
                 module {}
             )

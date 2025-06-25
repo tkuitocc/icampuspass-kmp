@@ -1,19 +1,20 @@
 package com.itocc.icampuspass
 
+import android.content.Context
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-val dataModule: Module = module {}
-
-expect val platformModule: Module
-
-fun initKoin() = initKoin(extraModules = emptyList())
+actual val platformModule: Module = module {}
 
 fun initKoin(
+    androidContext: Context,
     extraModules: List<Module>
 ) {
     startKoin {
+        androidContext(androidContext = androidContext)
+
         modules(
             dataModule,
             platformModule,
