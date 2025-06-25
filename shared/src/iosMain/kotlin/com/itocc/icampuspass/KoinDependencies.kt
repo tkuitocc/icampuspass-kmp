@@ -1,4 +1,4 @@
-package com.itocc.icampuspass.di
+package com.itocc.icampuspass
 
 import org.koin.core.component.KoinComponent
 
