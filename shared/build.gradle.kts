@@ -27,6 +27,9 @@ kotlin {
             isStatic = false
         }
     }
+    compilerOptions {
+        freeCompilerArgs.add("-Xexpect-actual-classes")
+    }
     sourceSets {
         all {
             // Required by KMP-NativeCoroutines
