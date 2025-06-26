@@ -10,13 +10,13 @@ actual val platformModule: Module = module {}
 
 fun initKoin(
     androidContext: Context,
-    extraModules: List<Module>
+    extraModules: List<Module> = emptyList()
 ) {
     startKoin {
         androidContext(androidContext = androidContext)
 
         modules(
-            dataModule,
+            commonModule,
             platformModule,
             *extraModules.toTypedArray(),
         )
