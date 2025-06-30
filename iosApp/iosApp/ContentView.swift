@@ -18,7 +18,7 @@ struct ContentView: View {
                         .font(.system(size: 200))
                         .foregroundColor(.accentColor)
 
-                    Text("SwiftUI: \(Greeting().greet())")
+                    Text("SwiftUI: \(KoinDependencies().greeting.greet())")
                 }
                 .transition(.move(edge: .top).combined(with: .opacity))
             }
