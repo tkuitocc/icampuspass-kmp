@@ -72,3 +72,12 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
 }
+
+sqldelight {
+    databases {
+        create(name = "Database") {
+            packageName.set("com.itocc.icampuspass.models.database")
+            generateAsync.set(true)
+        }
+    }
+}
