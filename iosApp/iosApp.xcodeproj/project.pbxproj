@@ -17,6 +17,7 @@
 		EB049B012C1AEB680032A688 /* KMPObservableViewModelSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EB049B002C1AEB680032A688 /* KMPObservableViewModelSwiftUI */; };
 		EB50C4902BE0EB69005DE781 /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = EB50C48F2BE0EB69005DE781 /* KMPNativeCoroutinesAsync */; };
 		EB50C4922BE0EB69005DE781 /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = EB50C4912BE0EB69005DE781 /* KMPNativeCoroutinesCore */; };
+		EB50C4942BE0F0D8005DE781 /* KMPObservableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB50C4932BE0F0D8005DE781 /* KMPObservableViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		83C118A92D8F0E210080670D /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		83C118AB2D8F0E380080670D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		AB3632DC29227652001CCB65 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		EB50C4932BE0F0D8005DE781 /* KMPObservableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMPObservableViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -116,6 +118,7 @@
 				83C118A92D8F0E210080670D /* InfoPlist.xcstrings */,
 				83C118AB2D8F0E380080670D /* Localizable.xcstrings */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
+				EB50C4932BE0F0D8005DE781 /* KMPObservableViewModel.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				EB50C4942BE0F0D8005DE781 /* KMPObservableViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
