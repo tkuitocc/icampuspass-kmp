@@ -36,7 +36,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.itocc.icampuspass.shared"
+    namespace = "app.icampuspass.shared"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

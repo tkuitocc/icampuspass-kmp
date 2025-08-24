@@ -1,9 +1,9 @@
-package com.itocc.icampuspass
+package app.icampuspass
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class ComposeAppAndroidUnitTest {
+class SharedCommonTest {
 
     @Test
     fun example() {

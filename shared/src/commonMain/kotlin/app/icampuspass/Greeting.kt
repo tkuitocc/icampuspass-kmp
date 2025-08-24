@@ -1,4 +1,4 @@
-package com.itocc.icampuspass
+package app.icampuspass
 
 class Greeting {
     private val platform = getPlatform()

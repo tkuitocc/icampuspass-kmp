@@ -1,4 +1,4 @@
-package com.itocc.icampuspass
+package app.icampuspass
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
