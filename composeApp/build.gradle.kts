@@ -30,6 +30,9 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(projects.shared)
         }
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
+        }
     }
 }
 
