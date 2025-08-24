@@ -20,16 +20,16 @@ jobs:
           java-version: 21
       - name: Android debug build
         run: ./gradlew assembleDebug --stacktrace
-      - name: Upload artifacts - com.itocc.icampuspass_debug.apk
+      - name: Upload artifacts - app.icampuspass_debug.apk
         uses: actions/upload-artifact@v4
         with:
-          name: com.itocc.icampuspass_debug.apk
+          name: app.icampuspass_debug.apk
           path: ./composeApp/build/outputs/apk/debug/composeApp-debug.apk
           if-no-files-found: ignore
-      - name: Upload artifacts - com.itocc.icampuspass_release_unsigned.apk
+      - name: Upload artifacts - app.icampuspass_release_unsigned.apk
         uses: actions/upload-artifact@v4
         with:
-          name: com.itocc.icampuspass_release_unsigned.apk
+          name: app.icampuspass_release_unsigned.apk
           path: ./composeApp/build/outputs/apk/release/composeApp-release-unsigned.apk
           if-no-files-found: ignore
       - name: Upload artifacts - sdkDependencies_debug.txt
