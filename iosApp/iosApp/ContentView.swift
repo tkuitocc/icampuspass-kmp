@@ -1,7 +1,13 @@
+import KMPNativeCoroutinesAsync
+import KMPObservableViewModelSwiftUI
 import Shared
 import SwiftUI
 
 struct ContentView: View {
+    @StateViewModel var viewModel = MainViewModel(
+        appRepository: KoinDependencies().appRepository
+    )
+
     @State private var showContent = false
 
     var body: some View {

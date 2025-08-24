@@ -1,6 +1,7 @@
 package app.icampuspass
 
 import android.app.Application
+import app.icampuspass.viewmodels.MainViewModel
 import org.koin.dsl.module
 
 class AndroidApp: Application() {
@@ -10,7 +11,11 @@ class AndroidApp: Application() {
         initKoin(
             androidContext = this@AndroidApp,
             extraModules = listOf(
-                module {}
+                module {
+                    factory<MainViewModel> {
+                        MainViewModel(appRepository = get())
+                    }
+                }
             )
         )
     }
