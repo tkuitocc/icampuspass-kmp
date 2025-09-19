@@ -5,7 +5,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
 class AppRepository() {
-    private val scope: CoroutineScope = CoroutineScope(context = SupervisorJob())
+    private val scope = CoroutineScope(context = SupervisorJob())
 
     fun init() {
         scope.launch {}

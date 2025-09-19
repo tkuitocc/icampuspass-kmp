@@ -5,5 +5,5 @@ import com.rickclephas.kmp.observableviewmodel.ViewModel
 
 class MainViewModel(
     private val appRepository: AppRepository
-): ViewModel() {
+) : ViewModel() {
 }

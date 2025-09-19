@@ -28,7 +28,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun App() {
     MaterialTheme {
-        val viewModel: MainViewModel = koinViewModel<MainViewModel>()
+        val viewModel = koinViewModel<MainViewModel>()
 
         var showContent by remember { mutableStateOf(value = false) }
 

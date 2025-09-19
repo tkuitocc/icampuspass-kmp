@@ -4,7 +4,7 @@ import android.app.Application
 import app.icampuspass.viewmodels.MainViewModel
 import org.koin.dsl.module
 
-class AndroidApp: Application() {
+class AndroidApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
