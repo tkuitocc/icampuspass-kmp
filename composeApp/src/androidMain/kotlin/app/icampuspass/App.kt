@@ -1,5 +1,7 @@
 package app.icampuspass
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import android.content.res.Configuration.UI_MODE_TYPE_NORMAL
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,23 +20,29 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewDynamicColors
+import androidx.compose.ui.tooling.preview.PreviewScreenSizes
+import androidx.compose.ui.tooling.preview.Wallpapers.BLUE_DOMINATED_EXAMPLE
+import androidx.compose.ui.tooling.preview.Wallpapers.GREEN_DOMINATED_EXAMPLE
+import androidx.compose.ui.tooling.preview.Wallpapers.RED_DOMINATED_EXAMPLE
+import androidx.compose.ui.tooling.preview.Wallpapers.YELLOW_DOMINATED_EXAMPLE
 import app.icampuspass.viewmodels.MainViewModel
+import app.icampuspass.views.theme.Theme
 import icampuspass.composeapp.generated.resources.Res
 import icampuspass.composeapp.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.painterResource
 import org.koin.androidx.compose.koinViewModel
 
-@Preview
 @Composable
 fun App() {
-    MaterialTheme {
+    Theme {
         val viewModel = koinViewModel<MainViewModel>()
 
         var showContent by remember { mutableStateOf(value = false) }
 
         Column(
             modifier = Modifier
-                .background(color = MaterialTheme.colorScheme.primaryContainer)
+                .background(color = MaterialTheme.colorScheme.surface)
                 .safeContentPadding()
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -60,4 +68,33 @@ fun App() {
             }
         }
     }
+}
+
+@Preview(name = "Light")
+@Preview(name = "Dark", uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL)
+@PreviewDynamicColors
+@Preview(
+    name = "Dark red",
+    uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL,
+    wallpaper = RED_DOMINATED_EXAMPLE
+)
+@Preview(
+    name = "Dark blue",
+    uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL,
+    wallpaper = BLUE_DOMINATED_EXAMPLE
+)
+@Preview(
+    name = "Dark green",
+    uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL,
+    wallpaper = GREEN_DOMINATED_EXAMPLE
+)
+@Preview(
+    name = "Dark yellow",
+    uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL,
+    wallpaper = YELLOW_DOMINATED_EXAMPLE
+)
+@PreviewScreenSizes
+@Composable
+fun AppPreview() {
+    App()
 }
