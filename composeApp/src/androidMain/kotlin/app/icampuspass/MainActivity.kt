@@ -1,5 +1,6 @@
 package app.icampuspass
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
@@ -13,8 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.dark(Color.Black.toArgb()),
-            navigationBarStyle = SystemBarStyle.dark(Color.Black.toArgb())
+            statusBarStyle = SystemBarStyle.dark(scrim = Color.Black.toArgb()),
+            navigationBarStyle = SystemBarStyle.dark(scrim = Color.Black.toArgb())
         )
 
         super.onCreate(savedInstanceState)
@@ -25,7 +26,16 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-@Preview
+@Preview(
+    showSystemUi = true,
+    showBackground = true
+)
+@Preview(
+    showSystemUi = true,
+    backgroundColor = 0xFF000000,
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true
+)
 @Composable
 fun AppAndroidPreview() {
     App()
