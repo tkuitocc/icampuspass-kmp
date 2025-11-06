@@ -24,9 +24,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
-@Preview
-@Composable
-fun AppAndroidPreview() {
-    App()
-}
