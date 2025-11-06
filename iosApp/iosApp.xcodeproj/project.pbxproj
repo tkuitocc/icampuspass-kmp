@@ -391,10 +391,10 @@
 /* Begin XCRemoteSwiftPackageReference section */
 		EB049AFD2C1AEB680032A688 /* XCRemoteSwiftPackageReference "KMP-ObservableViewModel" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rickclephas/KMP-ObservableViewModel";
+			repositoryURL = "https://github.com/rickclephas/KMP-ObservableViewModel.git";
 			requirement = {
 				kind = exactVersion;
-				version = "1.0.0-BETA-14";
+				version = "1.0.0";
 			};
 		};
 		EB50C48E2BE0EB69005DE781 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
