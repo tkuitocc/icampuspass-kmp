@@ -72,6 +72,12 @@ android {
     }
 }
 
+compose {
+    resources {
+        packageOfResClass = "app.icampuspass.composeapp.generated.resources"
+    }
+}
+
 dependencies {
     debugImplementation(compose.uiTooling)
 }

@@ -1,4 +1,4 @@
-rootProject.name = "icampuspass"
+rootProject.name = "icampuspass-kmp"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
