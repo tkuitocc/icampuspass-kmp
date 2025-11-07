@@ -15,9 +15,9 @@ import app.icampuspass.views.theme.Theme
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MainScreen(viewModel: MainViewModel = koinViewModel()) {
-    MainScreenContent()
-}
+fun MainScreen(
+    viewModel: MainViewModel = koinViewModel()
+) = MainScreenContent()
 
 @Composable
 private fun MainScreenContent() {
