@@ -17,12 +17,16 @@ kotlin {
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
+            implementation(libs.androidx.navigation3.runtime)
+            implementation(libs.androidx.navigation3.ui)
             implementation(libs.koin.androidx.compose)
         }
         commonMain.dependencies {
             implementation(compose.components.resources)
             implementation(compose.foundation)
             implementation(compose.material3)
+            implementation(compose.material3AdaptiveNavigationSuite)
+            implementation(compose.materialIconsExtended)
             implementation(compose.runtime)
             implementation(compose.ui)
             implementation(libs.kotlinx.serialization.core)
