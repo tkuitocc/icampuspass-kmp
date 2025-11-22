@@ -2,5 +2,6 @@ package app.icampuspass.shared.viewmodels
 
 import com.rickclephas.kmp.observableviewmodel.ViewModel
 
-class MainScreenViewModel() : ViewModel() {
+class
+MainScreenViewModel() : ViewModel() {
 }

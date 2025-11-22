@@ -1,5 +1,7 @@
 package app.icampuspass.shared
 
+import app.icampuspass.shared.models.HttpHelper
+import app.icampuspass.shared.models.TkuIlifeAccountRepository
 import app.icampuspass.shared.models.UserAccountRepository
 import app.icampuspass.shared.models.UserRepository
 import app.icampuspass.shared.models.database.DatabaseHelper
@@ -15,7 +17,9 @@ import org.koin.dsl.module
 
 val commonModule = module {
     single<DatabaseHelper> {
-        DatabaseHelper(driverFactory = get())
+        DatabaseHelper(
+            driverFactory = get()
+        )
     }
 
     single<HttpClient> {
@@ -30,6 +34,21 @@ val commonModule = module {
             }
 
             install(plugin = HttpCookies)
+        }
+    }
+
+    single<HttpHelper> {
+        HttpHelper(
+            httpClient = get()
+        )
+    }
+
+    single<TkuIlifeAccountRepository> {
+        TkuIlifeAccountRepository(
+            databaseHelper = get(),
+            httpHelper = get()
+        ).apply {
+            init()
         }
     }
 
