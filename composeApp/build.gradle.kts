@@ -17,18 +17,14 @@ kotlin {
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
             implementation(libs.koin.androidx.compose)
         }
         commonMain.dependencies {
             implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.runtime)
             implementation(compose.ui)
-            implementation(libs.androidx.lifecycle.runtime.compose)
-            implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.kotlinx.serialization.core)
             implementation(projects.shared)
         }
