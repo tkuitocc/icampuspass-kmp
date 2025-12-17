@@ -1,0 +1,60 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "testing_screen_greeting_button_label" : {
+      "comment" : "The toggle button label for greeting content on the Testing Screen.",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Click me!"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "點一下！"
+          }
+        }
+      }
+    },
+    "testing_screen_greeting_content_text" : {
+      "comment" : "The greeting content text on the Testing Screen.",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "SwiftUI: Hello, world!"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftUI：Hello, world!"
+          }
+        }
+      }
+    },
+    "testing_screen_greeting_title" : {
+      "comment" : "The title on the Testing Screen.",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Testing"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "測試"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
