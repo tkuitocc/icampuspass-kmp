@@ -3,14 +3,15 @@ import KMPObservableViewModelSwiftUI
 import Shared
 import SwiftUI
 
-struct ContentView: View {
+struct MainScreen: View {
+    @StateViewModel var viewModel = MainScreenViewModel()
+
     var body: some View {
-        GreetingScreen()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MainScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainScreen()
     }
 }

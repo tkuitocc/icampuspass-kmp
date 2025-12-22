@@ -1,19 +1,27 @@
 package app.icampuspass
 
+import app.icampuspass.models.UserAccountRepository
+import app.icampuspass.models.UserRepository
 import app.icampuspass.models.database.DatabaseHelper
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
 val commonModule = module {
-    single<AppRepository> {
-        AppRepository().apply {
+    single<DatabaseHelper> {
+        DatabaseHelper(driverFactory = get())
+    }
+
+    single<UserAccountRepository> {
+        UserAccountRepository().apply {
             init()
         }
     }
 
-    single<DatabaseHelper> {
-        DatabaseHelper(driverFactory = get())
+    single<UserRepository> {
+        UserRepository().apply {
+            init()
+        }
     }
 }
 

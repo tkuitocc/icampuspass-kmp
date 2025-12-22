@@ -26,18 +26,20 @@ import androidx.compose.ui.tooling.preview.Wallpapers.BLUE_DOMINATED_EXAMPLE
 import androidx.compose.ui.tooling.preview.Wallpapers.GREEN_DOMINATED_EXAMPLE
 import androidx.compose.ui.tooling.preview.Wallpapers.RED_DOMINATED_EXAMPLE
 import androidx.compose.ui.tooling.preview.Wallpapers.YELLOW_DOMINATED_EXAMPLE
-import app.icampuspass.Greeting
+import app.icampuspass.models.Greeting
 import app.icampuspass.composeapp.generated.resources.Res
 import app.icampuspass.composeapp.generated.resources.compose_multiplatform
-import app.icampuspass.viewmodels.MainViewModel
+import app.icampuspass.viewmodels.GreetingScreenViewModel
 import app.icampuspass.views.theme.Theme
 import org.jetbrains.compose.resources.painterResource
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun GreetingScreen(
-    viewModel: MainViewModel = koinViewModel()
-) = GreetingScreenContent()
+    viewModel: GreetingScreenViewModel = koinViewModel()
+) {
+    GreetingScreenContent()
+}
 
 @Composable
 private fun GreetingScreenContent() {

@@ -1,4 +1,4 @@
-package app.icampuspass
+package app.icampuspass.models
 
 class Greeting {
     private val platform = getPlatform()

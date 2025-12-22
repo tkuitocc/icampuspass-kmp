@@ -1,4 +1,4 @@
-package app.icampuspass
+package app.icampuspass.models
 
 import platform.UIKit.UIDevice
 

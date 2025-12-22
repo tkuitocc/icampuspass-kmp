@@ -10,14 +10,16 @@ import androidx.compose.ui.tooling.preview.Wallpapers.BLUE_DOMINATED_EXAMPLE
 import androidx.compose.ui.tooling.preview.Wallpapers.GREEN_DOMINATED_EXAMPLE
 import androidx.compose.ui.tooling.preview.Wallpapers.RED_DOMINATED_EXAMPLE
 import androidx.compose.ui.tooling.preview.Wallpapers.YELLOW_DOMINATED_EXAMPLE
-import app.icampuspass.viewmodels.MainViewModel
+import app.icampuspass.viewmodels.MainScreenViewModel
 import app.icampuspass.views.theme.Theme
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MainScreen(
-    viewModel: MainViewModel = koinViewModel()
-) = MainScreenContent()
+    viewModel: MainScreenViewModel = koinViewModel()
+) {
+    MainScreenContent()
+}
 
 @Composable
 private fun MainScreenContent() {

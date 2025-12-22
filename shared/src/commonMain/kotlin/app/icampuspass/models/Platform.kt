@@ -1,4 +1,4 @@
-package app.icampuspass
+package app.icampuspass.models
 
 interface Platform {
     val name: String
