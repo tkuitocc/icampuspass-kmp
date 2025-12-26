@@ -4,7 +4,9 @@ import Shared
 import SwiftUI
 
 struct GreetingScreen: View {
-    @StateViewModel var viewModel = GreetingScreenViewModel()
+    @StateViewModel var viewModel = GreetingScreenViewModel(
+        userRepository: KoinDependencies().userRepository
+    )
 
     @State private var showContent = false
 
@@ -22,7 +24,7 @@ struct GreetingScreen: View {
                     .font(.system(size: 200))
                     .foregroundColor(.accentColor)
 
-                    Text("SwiftUI: \(Greeting().greet())")
+                    Text("SwiftUI: \(viewModel.getGreeting().greet())")
                 }
                 .transition(.move(edge: .top).combined(with: .opacity))
             }

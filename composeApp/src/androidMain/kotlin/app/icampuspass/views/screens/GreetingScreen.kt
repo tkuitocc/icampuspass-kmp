@@ -29,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Wallpapers.YELLOW_DOMINATED_EXAMPLE
 import app.icampuspass.models.Greeting
 import app.icampuspass.composeapp.generated.resources.Res
 import app.icampuspass.composeapp.generated.resources.compose_multiplatform
+import app.icampuspass.models.getPlatform
 import app.icampuspass.viewmodels.GreetingScreenViewModel
 import app.icampuspass.views.theme.Theme
 import org.jetbrains.compose.resources.painterResource
@@ -38,11 +39,15 @@ import org.koin.androidx.compose.koinViewModel
 fun GreetingScreen(
     viewModel: GreetingScreenViewModel = koinViewModel()
 ) {
-    GreetingScreenContent()
+    GreetingScreenContent(
+        greet = remember { viewModel.getGreeting().greet() }
+    )
 }
 
 @Composable
-private fun GreetingScreenContent() {
+private fun GreetingScreenContent(
+    greet: String
+) {
     var showContent by remember { mutableStateOf(value = false) }
 
     Column(
@@ -57,8 +62,6 @@ private fun GreetingScreenContent() {
         }
 
         AnimatedVisibility(visible = showContent) {
-            val greeting = remember { Greeting().greet() }
-
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -68,7 +71,7 @@ private fun GreetingScreenContent() {
                     contentDescription = null
                 )
 
-                Text(text = "Compose: $greeting")
+                Text(text = "Compose: $greet")
             }
         }
     }
@@ -102,6 +105,8 @@ private fun GreetingScreenContent() {
 @Composable
 private fun GreetingScreenPreview() {
     Theme {
-        GreetingScreenContent()
+        GreetingScreenContent(
+            greet = remember { Greeting(platform = getPlatform()).greet() }
+        )
     }
 }
