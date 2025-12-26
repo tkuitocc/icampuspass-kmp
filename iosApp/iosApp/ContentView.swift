@@ -1,6 +1,3 @@
-import KMPNativeCoroutinesAsync
-import KMPObservableViewModelSwiftUI
-import Shared
 import SwiftUI
 
 struct ContentView: View {
