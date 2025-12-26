@@ -46,13 +46,13 @@ kotlin {
         commonMain.dependencies {
             // put your Multiplatform dependencies here
             api(libs.kmp.observable.viewmodel)
+            implementation(libs.cryptography.core)
+            implementation(libs.cryptography.provider.optimal)
             implementation(libs.koin.core)
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.sqldelight.runtime)
-
-            api(libs.kmp.observable.viewmodel)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
