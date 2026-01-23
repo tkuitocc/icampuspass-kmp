@@ -38,16 +38,12 @@ kotlin {
             isStatic = false
         }
     }
-    compilerOptions {
-        freeCompilerArgs.add("-Xexpect-actual-classes")
-    }
     sourceSets {
         all {
-            // Required by KMP-NativeCoroutines
-            languageSettings.optIn(annotationName = "kotlin.experimental.ExperimentalObjCName")
-
-            // Required by KMP-ObservableViewModel
-            languageSettings.optIn(annotationName = "kotlinx.cinterop.ExperimentalForeignApi")
+            languageSettings {
+                // Required by KMP-NativeCoroutines
+                optIn("kotlin.experimental.ExperimentalObjCName")
+            }
         }
         commonMain.dependencies {
             // put your Multiplatform dependencies here
