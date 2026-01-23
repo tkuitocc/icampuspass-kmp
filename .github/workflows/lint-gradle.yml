@@ -20,7 +20,7 @@ jobs:
       - name: Gradle lint
         run: ./gradlew lint --stacktrace
       - name: Output lint-results-debug.txt
-        run: if [ -f ./composeApp/build/reports/lint-results-debug.txt ] ; then cat ./composeApp/build/reports/lint-results-debug.txt ; fi
+        run: if [ -f ./androidApp/build/reports/lint-results-debug.txt ] ; then cat ./androidApp/build/reports/lint-results-debug.txt ; fi
       - name: Upload artifacts - problems-report.html
         uses: actions/upload-artifact@v4
         with:
@@ -31,17 +31,17 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: lint-results-debug.html
-          path: ./composeApp/build/reports/lint-results-debug.html
+          path: ./androidApp/build/reports/lint-results-debug.html
           if-no-files-found: ignore
       - name: Upload artifacts - lint-results-debug.txt
         uses: actions/upload-artifact@v4
         with:
           name: lint-results-debug.txt
-          path: ./composeApp/build/reports/lint-results-debug.txt
+          path: ./androidApp/build/reports/lint-results-debug.txt
           if-no-files-found: ignore
       - name: Upload artifacts - lint-results-debug.xml
         uses: actions/upload-artifact@v4
         with:
           name: lint-results-debug.xml
-          path: ./composeApp/build/reports/lint-results-debug.xml
+          path: ./androidApp/build/reports/lint-results-debug.xml
           if-no-files-found: ignore

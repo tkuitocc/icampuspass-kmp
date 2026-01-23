@@ -23,23 +23,23 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: app.icampuspass_debug.apk
-          path: ./composeApp/build/outputs/apk/debug/composeApp-debug.apk
+          path: ./androidApp/build/outputs/apk/debug/androidApp-debug.apk
           if-no-files-found: ignore
       - name: Upload artifacts - app.icampuspass_release_unsigned.apk
         uses: actions/upload-artifact@v4
         with:
           name: app.icampuspass_release_unsigned.apk
-          path: ./composeApp/build/outputs/apk/release/composeApp-release-unsigned.apk
+          path: ./androidApp/build/outputs/apk/release/androidApp-release-unsigned.apk
           if-no-files-found: ignore
       - name: Upload artifacts - sdkDependencies_debug.txt
         uses: actions/upload-artifact@v4
         with:
           name: sdkDependencies_debug.txt
-          path: ./composeApp/build/outputs/sdk-dependencies/debug/sdkDependencies.txt
+          path: ./androidApp/build/outputs/sdk-dependencies/debug/sdkDependencies.txt
           if-no-files-found: ignore
       - name: Upload artifacts - sdkDependencies_release.txt
         uses: actions/upload-artifact@v4
         with:
           name: sdkDependencies_release.txt
-          path: ./composeApp/build/outputs/sdk-dependencies/release/sdkDependencies.txt
+          path: ./androidApp/build/outputs/sdk-dependencies/release/sdkDependencies.txt
           if-no-files-found: ignore
