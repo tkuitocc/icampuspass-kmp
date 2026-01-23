@@ -18,15 +18,24 @@ jobs:
           distribution: 'zulu'
           java-version: 21
       - name: Set Xcode version
-        run: |
-          sudo xcode-select -s /Applications/Xcode_16.4.app/Contents/Developer
-          xcodebuild -version
-          xcodebuild -showsdks
+        run: sudo xcode-select -s /Applications/Xcode_16.4.app/Contents/Developer
+      - name: Ensure iOS Platform is installed
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 15
+          max_attempts: 3
+          command: sudo xcodebuild -downloadPlatform iOS
       - name: Setup iOS Simulator
-        run: |
-          sudo xcodebuild -downloadPlatform iOS
-          xcrun simctl list devices available
-          xcrun simctl list runtimes
-          xcrun simctl shutdown all && xcrun simctl erase all
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 15
+          max_attempts: 3
+          command: |
+            xcrun simctl list
+            sudo xcodebuild -downloadPlatform iOS
       - name: iOS debug build
-        run: cd iosApp && xcodebuild -scheme iosApp -configuration Debug -destination 'platform=iOS Simulator,OS=latest,name=iPhone 16' CODE_SIGNING_ALLOWED='NO'
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 15
+          max_attempts: 3
+          command: cd iosApp && xcodebuild -scheme iosApp -configuration Debug -destination 'platform=iOS Simulator,OS=latest,name=iPhone 16' CODE_SIGNING_ALLOWED='NO'
