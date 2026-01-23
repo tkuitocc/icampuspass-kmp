@@ -1,7 +1,9 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.androidKotlinMultiplatformLibrary)
+    alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.kmpNativeCoroutines)
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.kotlinxSerialization)
@@ -10,9 +12,18 @@ plugins {
 }
 
 kotlin {
-    androidTarget {
+    androidLibrary {
+        namespace = "app.icampuspass.shared"
+        compileSdk = libs.versions.android.compileSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_17)
+        }
+        androidResources {
+            enable = true
+        }
+        withHostTest {
+            isIncludeAndroidResources = true
         }
     }
     listOf(
@@ -38,21 +49,28 @@ kotlin {
             // Required by KMP-ObservableViewModel
             languageSettings.optIn(annotationName = "kotlinx.cinterop.ExperimentalForeignApi")
         }
-        androidMain.dependencies {
-            implementation(libs.koin.androidx.compose)
-            implementation(libs.ktor.client.okhttp)
-            implementation(libs.sqldelight.android)
-        }
         commonMain.dependencies {
             // put your Multiplatform dependencies here
+            api(libs.compose.components.resources)
             api(libs.kmp.observable.viewmodel)
             implementation(libs.cryptography.core)
             implementation(libs.cryptography.provider.optimal)
             implementation(libs.koin.core)
+            implementation(libs.kotlinx.serialization.core)
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.sqldelight.runtime)
+        }
+        androidMain.dependencies {
+            implementation(libs.compose.foundation)
+            implementation(libs.compose.material3)
+            implementation(libs.compose.runtime)
+            implementation(libs.compose.ui)
+            implementation(libs.compose.ui.tooling.preview)
+            implementation(libs.koin.androidx.compose)
+            implementation(libs.ktor.client.okhttp)
+            implementation(libs.sqldelight.android)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
@@ -64,15 +82,15 @@ kotlin {
     }
 }
 
-android {
-    namespace = "app.icampuspass.shared"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    defaultConfig {
-        minSdk = libs.versions.android.minSdk.get().toInt()
+dependencies {
+    androidRuntimeClasspath(libs.compose.ui.tooling)
+}
+
+compose {
+    resources {
+        generateResClass = always
+        packageOfResClass = "app.icampuspass.shared.generated.resources"
+        publicResClass = true
     }
 }
 
