@@ -10,11 +10,23 @@ struct GreetingScreen: View {
 
     var body: some View {
         VStack {
-            Button("Click me!") {
-                withAnimation {
-                    showContent = !showContent
+            Button(
+                action: {
+                    withAnimation {
+                        showContent = !showContent
+                    }
                 }
+            ) {
+                Text(
+                    String(
+                        localized: "greeting_screen_greeting_button_label",
+                        defaultValue: "Click me!",
+                        table: "GreetingScreen",
+                        comment: "The toggle button label for greeting content on the Greeting Screen."
+                    )
+                )
             }
+            .buttonStyle(.borderedProminent)
 
             if showContent {
                 VStack(spacing: 16) {
@@ -22,7 +34,14 @@ struct GreetingScreen: View {
                     .font(.system(size: 200))
                     .foregroundColor(.accentColor)
 
-                    Text("SwiftUI: \(Greeting().greet())")
+                    Text(
+                        String(
+                            localized: "greeting_screen_greeting_content_text",
+                            defaultValue: "SwiftUI: \(Greeting().greet())",
+                            table: "GreetingScreen",
+                            comment: "The greeting content text on the Greeting Screen."
+                        )
+                    )
                 }
                 .transition(.move(edge: .top).combined(with: .opacity))
             }

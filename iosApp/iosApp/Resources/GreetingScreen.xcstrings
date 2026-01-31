@@ -1,0 +1,42 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "greeting_screen_greeting_button_label" : {
+      "comment" : "The toggle button label for greeting content on the Greeting Screen.",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click me!"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "點一下！"
+          }
+        }
+      }
+    },
+    "greeting_screen_greeting_content_text" : {
+      "comment" : "The greeting content text on the Greeting Screen.",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftUI: %@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SwiftUI：%@"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
