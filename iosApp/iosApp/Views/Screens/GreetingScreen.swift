@@ -51,8 +51,6 @@ struct GreetingScreen: View {
     }
 }
 
-struct GreetingScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        GreetingScreen()
-    }
+#Preview {
+    GreetingScreen()
 }
