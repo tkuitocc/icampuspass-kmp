@@ -1,5 +1,8 @@
 package app.icampuspass
 
+import app.icampuspass.models.CryptographyHelper
+import app.icampuspass.models.HttpHelper
+import app.icampuspass.models.TkuIlifeAccountRepository
 import app.icampuspass.models.UserAccountRepository
 import app.icampuspass.models.UserRepository
 import app.icampuspass.models.database.DatabaseHelper
@@ -15,7 +18,9 @@ import org.koin.dsl.module
 
 val commonModule = module {
     single<DatabaseHelper> {
-        DatabaseHelper(driverFactory = get())
+        DatabaseHelper(
+            driverFactory = get()
+        )
     }
 
     single<HttpClient> {
@@ -30,6 +35,21 @@ val commonModule = module {
             }
 
             install(plugin = HttpCookies)
+        }
+    }
+
+    single<HttpHelper> {
+        HttpHelper(
+            httpClient = get()
+        )
+    }
+
+    single<TkuIlifeAccountRepository> {
+        TkuIlifeAccountRepository(
+            databaseHelper = get(),
+            httpHelper = get()
+        ).apply {
+            init()
         }
     }
 
