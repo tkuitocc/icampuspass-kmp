@@ -49,21 +49,21 @@ kotlin {
             // put your Multiplatform dependencies here
             api(libs.compose.components.resources)
             api(libs.kmp.observable.viewmodel)
-            implementation(libs.cryptography.core)
-            implementation(libs.cryptography.provider.optimal)
-            implementation(libs.koin.core)
-            implementation(libs.kotlinx.serialization.core)
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.content.negotiation)
-            implementation(libs.ktor.serialization.kotlinx.json)
-            implementation(libs.sqldelight.runtime)
-        }
-        androidMain.dependencies {
             implementation(libs.compose.foundation)
             implementation(libs.compose.material3)
             implementation(libs.compose.runtime)
             implementation(libs.compose.ui)
             implementation(libs.compose.ui.tooling.preview)
+            implementation(libs.cryptography.core)
+            implementation(libs.cryptography.provider.optimal)
+            implementation(libs.koin.core)
+            implementation(libs.kotlinx.serialization.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.sqldelight.runtime)
+        }
+        androidMain.dependencies {
             implementation(libs.koin.androidx.compose)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.sqldelight.android)
