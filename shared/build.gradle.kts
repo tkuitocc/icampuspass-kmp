@@ -55,7 +55,6 @@ kotlin {
             implementation(libs.compose.ui)
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.cryptography.core)
-            implementation(libs.cryptography.provider.optimal)
             implementation(libs.koin.core)
             implementation(libs.kotlinx.serialization.core)
             implementation(libs.ktor.client.content.negotiation)
@@ -64,11 +63,13 @@ kotlin {
             implementation(libs.sqldelight.runtime)
         }
         androidMain.dependencies {
+            implementation(libs.cryptography.provider.jdk)
             implementation(libs.koin.androidx.compose)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.sqldelight.android)
         }
         iosMain.dependencies {
+            implementation(libs.cryptography.provider.openssl3.prebuilt)
             implementation(libs.ktor.client.darwin)
             implementation(libs.sqldelight.native)
         }
