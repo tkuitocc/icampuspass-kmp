@@ -1,5 +1,8 @@
-import Shared
+// Standard imports
 import SwiftUI
+
+// Local imports
+import Shared
 
 @main
 struct iOSApp: App {

@@ -1,7 +1,12 @@
+// Standard imports
+import SwiftUI
+
+// Third-party imports
 import KMPNativeCoroutinesAsync
 import KMPObservableViewModelSwiftUI
+
+// Local imports
 import Shared
-import SwiftUI
 
 struct GreetingScreen: View {
     @StateViewModel var viewModel = GreetingScreenViewModel()

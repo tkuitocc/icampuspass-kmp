@@ -33,3 +33,27 @@ This is a Kotlin Multiplatform project targeting Android, iOS.
 
 Learn more about
 [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html).
+
+## Coding conventions 
+
+### Imports
+
+* Kotlin: No grouping, just use alphabetical order, uppercase before lowercase.
+
+  ```kotlin
+  import somepackage.Something
+  import somepackage.something
+  ```
+
+* Swift: With grouping, also use alphabetical order, uppercase before lowercase.
+
+  ```swift
+  // Standard imports
+  import SwiftUI
+
+  // Third-party imports
+  import Thirdparty
+
+  // Local imports
+  import Shared
+  ```

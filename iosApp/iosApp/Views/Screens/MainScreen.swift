@@ -1,7 +1,12 @@
+// Standard imports
+import SwiftUI
+
+// Third-party imports
 import KMPNativeCoroutinesAsync
 import KMPObservableViewModelSwiftUI
+
+// Local imports
 import Shared
-import SwiftUI
 
 struct MainScreen: View {
     @StateViewModel var viewModel = MainScreenViewModel()
