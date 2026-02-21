@@ -1,13 +1,10 @@
 package app.icampuspass.viewmodels
 
 import app.icampuspass.models.UserRepository
-import app.icampuspass.models.Greeting
 import com.rickclephas.kmp.observableviewmodel.ViewModel
 
-class GreetingScreenViewModel(
+class ClassScheduleViewModel(
     private val userRepository: UserRepository
 ): ViewModel() {
-    fun getGreeting(): Greeting {
-        return userRepository.getGreeting()
-    }
+    fun getClassScheduleSessions() {}
 }
