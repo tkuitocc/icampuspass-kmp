@@ -52,6 +52,11 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
+		7555FF7A292A565900829871 /* iosAppShared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = iosAppShared;
+			sourceTree = "<group>";
+		};
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -105,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				7555FF7929225F7C00F7AF9C /* Configuration */,
+				7555FF7A292A565900829871 /* iosAppShared */,
 				7555FF7D242A565900829871 /* iosApp */,
 				7555FFBE2E9CA65C0046E640 /* iosAppTests */,
 				7555FFC82E9CA65C0046E640 /* iosAppUITests */,
@@ -147,6 +153,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				7555FF7A292A565900829871 /* iosAppShared */,
 				7555FF7D242A565900829871 /* iosApp */,
 			);
 			name = iosApp;
