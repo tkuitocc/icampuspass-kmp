@@ -14,7 +14,9 @@ class AndroidApp : Application() {
             extraModules = listOf(
                 module {
                     factory<GreetingScreenViewModel> {
-                        GreetingScreenViewModel()
+                        GreetingScreenViewModel(
+                            userRepository = get()
+                        )
                     }
 
                     factory<MainScreenViewModel> {
