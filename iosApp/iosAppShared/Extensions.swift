@@ -1,6 +1,6 @@
-public protocol Alsoable {}
+public protocol ScopableReference: AnyObject {}
 
-extension Alsoable {
+extension ScopableReference {
     @discardableResult
     @inline(__always)
     public func also(_ block: (Self) throws -> Void) rethrows -> Self {
@@ -8,11 +8,7 @@ extension Alsoable {
 
         return self
     }
-}
 
-protocol ApplyableReference: AnyObject {}
-
-extension ApplyableReference {
     @discardableResult
     @inline(__always)
     public func apply(_ block: (Self) throws -> Void) rethrows -> Self {
@@ -20,11 +16,31 @@ extension ApplyableReference {
 
         return self
     }
+
+    @discardableResult
+    @inline(__always)
+    public func `let`<T>(_ block: (Self) throws -> T) rethrows -> T {
+        try block(self)
+    }
+
+    @discardableResult
+    @inline(__always)
+    public func run<T: ScopableReference>(_ block: (Self) throws -> T) rethrows -> T {
+        try block(self)
+    }
 }
 
-public protocol ApplyableValue {}
+public protocol ScopableValue {}
 
-extension ApplyableValue {
+extension ScopableValue {
+    @discardableResult
+    @inline(__always)
+    public func also(_ block: (Self) throws -> Void) rethrows -> Self {
+        try block(self)
+
+        return self
+    }
+
     @discardableResult
     @inline(__always)
     public func applied(_ block: (inout Self) throws -> Void) rethrows -> Self {
@@ -33,5 +49,17 @@ extension ApplyableValue {
         try block(&copy)
 
         return copy
+    }
+
+    @discardableResult
+    @inline(__always)
+    public func `let`<T>(_ block: (Self) throws -> T) rethrows -> T {
+        try block(self)
+    }
+
+    @discardableResult
+    @inline(__always)
+    public func run<T: ScopableValue>(_ block: (Self) throws -> T) rethrows -> T {
+        try block(self)
     }
 }
