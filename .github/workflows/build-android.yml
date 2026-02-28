@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  build:
     name: Build
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -17,29 +17,57 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: 21
-      - name: Android debug build
-        run: ./gradlew assembleDebug --stacktrace
-      - name: Upload artifacts - app.icampuspass_debug.apk
+      - name: Android debug and release build
+        run: ./gradlew assembleDebug assembleRelease --stacktrace
+      - name: Upload artifacts - androidApp-debug.apk
         uses: actions/upload-artifact@v4
         with:
-          name: app.icampuspass_debug.apk
+          name: androidapp_debug.apk
           path: ./androidApp/build/outputs/apk/debug/androidApp-debug.apk
           if-no-files-found: ignore
-      - name: Upload artifacts - app.icampuspass_release_unsigned.apk
+      - name: Upload artifacts - androidApp-release-unsigned.apk
         uses: actions/upload-artifact@v4
         with:
-          name: app.icampuspass_release_unsigned.apk
+          name: androidapp_release_unsigned.apk
           path: ./androidApp/build/outputs/apk/release/androidApp-release-unsigned.apk
           if-no-files-found: ignore
-      - name: Upload artifacts - sdkDependencies_debug.txt
+      - name: Upload artifacts - debug/sdkDependencies.txt
         uses: actions/upload-artifact@v4
         with:
-          name: sdkDependencies_debug.txt
+          name: androidapp_sdkdependencies_debug.txt
           path: ./androidApp/build/outputs/sdk-dependencies/debug/sdkDependencies.txt
           if-no-files-found: ignore
-      - name: Upload artifacts - sdkDependencies_release.txt
+      - name: Upload artifacts - release/sdkDependencies.txt
         uses: actions/upload-artifact@v4
         with:
-          name: sdkDependencies_release.txt
+          name: androidapp_sdkdependencies_release.txt
           path: ./androidApp/build/outputs/sdk-dependencies/release/sdkDependencies.txt
+          if-no-files-found: ignore
+      - name: Gradle lint
+        run: ./gradlew lint --stacktrace
+      - name: Output lint-results-debug.txt
+        run: if [ -f ./androidApp/build/reports/lint-results-debug.txt ] ; then cat ./androidApp/build/reports/lint-results-debug.txt ; fi
+      - name: Upload artifacts - problems-report.html
+        uses: actions/upload-artifact@v4
+        with:
+          name: androidapp_problems_report.html
+          path: ./build/reports/problems/problems-report.html
+          if-no-files-found: ignore
+      - name: Upload artifacts - lint-results-debug.html
+        uses: actions/upload-artifact@v4
+        with:
+          name: androidapp_lint_results_debug.html
+          path: ./androidApp/build/reports/lint-results-debug.html
+          if-no-files-found: ignore
+      - name: Upload artifacts - lint-results-debug.txt
+        uses: actions/upload-artifact@v4
+        with:
+          name: androidapp_lint_results_debug.txt
+          path: ./androidApp/build/reports/lint-results-debug.txt
+          if-no-files-found: ignore
+      - name: Upload artifacts - lint-results-debug.xml
+        uses: actions/upload-artifact@v4
+        with:
+          name: androidapp_lint_results_debug.xml
+          path: ./androidApp/build/reports/lint-results-debug.xml
           if-no-files-found: ignore

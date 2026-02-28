@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  build:
     name: Build
     runs-on: macOS-latest
     steps:
@@ -19,17 +19,41 @@ jobs:
           java-version: 21
       - name: Set Xcode version
         run: sudo xcode-select -s /Applications/Xcode_16.4.app/Contents/Developer
-      - name: Setup iOS Simulator
-        uses: nick-fields/retry@v3
-        with:
-          timeout_minutes: 15
-          max_attempts: 5
-          command: |
-            xcrun simctl list
-            sudo xcodebuild -downloadPlatform iOS
       - name: iOS debug build
         uses: nick-fields/retry@v3
         with:
           timeout_minutes: 15
           max_attempts: 5
-          command: cd iosApp && xcodebuild -scheme iosApp -configuration Debug -destination 'platform=iOS Simulator,OS=latest,name=iPhone 16' CODE_SIGNING_ALLOWED='NO'
+          command: cd iosApp && xcodebuild -scheme iosApp -configuration Debug -sdk iphoneos -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED='NO' CODE_SIGNING_REQUIRED='NO' ONLY_ACTIVE_ARCH='NO' SYMROOT=$(pwd)/build clean build
+      - name: iOS generate IPA file
+        run: |
+          rm -rf Payload
+          mkdir -p Payload
+          cp -r "$(pwd)/iosApp/build/Debug-iphoneos/iosApp.app" Payload/
+          zip -r iosApp_debug.ipa Payload
+          rm -rf Payload
+      - name: Upload artifacts - iosapp_debug.ipa
+        uses: actions/upload-artifact@v4
+        with:
+          name: iosapp_debug.ipa
+          path: ./iosApp_debug.ipa
+          if-no-files-found: ignore
+      - name: iOS release build
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 15
+          max_attempts: 5
+          command: cd iosApp && xcodebuild -scheme iosApp -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED='NO' CODE_SIGNING_REQUIRED='NO' ONLY_ACTIVE_ARCH='NO' SYMROOT=$(pwd)/build clean build
+      - name: iOS generate IPA file
+        run: |
+          rm -rf Payload
+          mkdir -p Payload
+          cp -r "$(pwd)/iosApp/build/Release-iphoneos/iosApp.app" Payload/
+          zip -r iosApp_release.ipa Payload
+          rm -rf Payload
+      - name: Upload artifacts - iosApp_release.ipa
+        uses: actions/upload-artifact@v4
+        with:
+          name: iosapp_release.ipa
+          path: ./iosApp_release.ipa
+          if-no-files-found: ignore
