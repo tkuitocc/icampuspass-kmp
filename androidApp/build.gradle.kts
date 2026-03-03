@@ -32,6 +32,10 @@ android {
     androidResources {
         generateLocaleConfig = true
     }
+    buildFeatures {
+        // Required by androidx.glance
+        compose = true
+    }
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -49,6 +53,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.glance.appwidget)
+    implementation(libs.androidx.glance.material3)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.compose.components.resources)
@@ -61,6 +67,8 @@ dependencies {
     implementation(libs.kotlinx.serialization.core)
     implementation(projects.shared)
     debugImplementation(libs.compose.ui.tooling)
+    testImplementation(libs.androidx.glance.appwidget.testing)
+    testImplementation(libs.androidx.glance.testing)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(libs.androidx.test.ext.junit)
