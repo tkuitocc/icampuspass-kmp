@@ -1,4 +1,4 @@
-package app.icampuspass.android.app.views.theme
+package app.icampuspass.android.shared.views.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
