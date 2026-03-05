@@ -15,10 +15,10 @@ kotlin {
 }
 
 android {
-    namespace = "app.icampuspass"
+    namespace = "app.icampuspass.android"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
-        applicationId = "app.icampuspass"
+        applicationId = "app.icampuspass.android"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1

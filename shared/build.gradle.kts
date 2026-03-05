@@ -94,7 +94,7 @@ compose {
 sqldelight {
     databases {
         create(name = "Database") {
-            packageName.set("app.icampuspass.models.database")
+            packageName.set("app.icampuspass.shared.models.database")
             generateAsync.set(true)
         }
     }
