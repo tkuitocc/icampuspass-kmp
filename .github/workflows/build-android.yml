@@ -11,36 +11,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Set up JDK 21
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: 'zulu'
           java-version: 21
       - name: Android debug and release build
         run: ./gradlew assembleDebug assembleRelease --stacktrace
       - name: Upload artifacts - androidApp-debug.apk
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          name: androidapp_debug.apk
+          name: androidapp_debug.apk.zip
           path: ./androidApp/build/outputs/apk/debug/androidApp-debug.apk
           if-no-files-found: ignore
       - name: Upload artifacts - androidApp-release-unsigned.apk
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          name: androidapp_release_unsigned.apk
+          name: androidapp_release_unsigned.apk.zip
           path: ./androidApp/build/outputs/apk/release/androidApp-release-unsigned.apk
           if-no-files-found: ignore
       - name: Upload artifacts - debug/sdkDependencies.txt
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          name: androidapp_sdkdependencies_debug.txt
+          name: androidapp_sdkdependencies_debug.txt.zip
           path: ./androidApp/build/outputs/sdk-dependencies/debug/sdkDependencies.txt
           if-no-files-found: ignore
       - name: Upload artifacts - release/sdkDependencies.txt
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          name: androidapp_sdkdependencies_release.txt
+          name: androidapp_sdkdependencies_release.txt.zip
           path: ./androidApp/build/outputs/sdk-dependencies/release/sdkDependencies.txt
           if-no-files-found: ignore
       - name: Gradle lint
@@ -48,26 +48,29 @@ jobs:
       - name: Output lint-results-debug.txt
         run: if [ -f ./androidApp/build/reports/lint-results-debug.txt ] ; then cat ./androidApp/build/reports/lint-results-debug.txt ; fi
       - name: Upload artifacts - problems-report.html
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: androidapp_problems_report.html
           path: ./build/reports/problems/problems-report.html
+          archive: false
           if-no-files-found: ignore
       - name: Upload artifacts - lint-results-debug.html
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: androidapp_lint_results_debug.html
           path: ./androidApp/build/reports/lint-results-debug.html
+          archive: false
           if-no-files-found: ignore
       - name: Upload artifacts - lint-results-debug.txt
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: androidapp_lint_results_debug.txt
           path: ./androidApp/build/reports/lint-results-debug.txt
+          archive: false
           if-no-files-found: ignore
       - name: Upload artifacts - lint-results-debug.xml
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          name: androidapp_lint_results_debug.xml
+          name: androidapp_lint_results_debug.xml.zip
           path: ./androidApp/build/reports/lint-results-debug.xml
           if-no-files-found: ignore
