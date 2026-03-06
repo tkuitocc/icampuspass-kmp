@@ -1,1 +1,16 @@
 PRAGMA user_version = 1;
+
+CREATE TABLE tku_ilife_account (
+    tia_student_id_no TEXT NOT NULL
+);
+
+selectAllTkuIlifeAccounts:
+    SELECT tia_student_id_no
+    FROM tku_ilife_account;
+
+insertTkuIlifeAccount:
+    INSERT INTO tku_ilife_account (tia_student_id_no)
+    VALUES (:tia_student_id_no);
+
+deleteTkuIlifeAccounts:
+    DELETE FROM tku_ilife_account;
