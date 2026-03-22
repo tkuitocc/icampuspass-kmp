@@ -650,7 +650,7 @@
 			repositoryURL = "https://github.com/rickclephas/KMP-ObservableViewModel.git";
 			requirement = {
 				kind = exactVersion;
-				version = 1.0.2;
+				version = 1.0.3;
 			};
 		};
 		EB50C48E2BE0EB69005DE781 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
@@ -658,7 +658,7 @@
 			repositoryURL = "https://github.com/rickclephas/KMP-NativeCoroutines.git";
 			requirement = {
 				kind = exactVersion;
-				version = "1.0.1-spm-async";
+				version = "1.0.2-spm-async";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
