@@ -22,7 +22,7 @@ koin = "4.2.0"
 kotlin = "2.3.20"
 kotlinx-serialization = "1.10.0"
 ksp = "2.3.4"
-ktor = "3.4.1"
+ktor = "3.4.2"
 qrose = "1.1.2"
 sqldelight = "2.3.2"
 
