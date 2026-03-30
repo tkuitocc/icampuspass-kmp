@@ -12,7 +12,8 @@ struct iOSApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationScreen()
+            // NavigationScreen()
+            TestingScreen()
         }
     }
 }

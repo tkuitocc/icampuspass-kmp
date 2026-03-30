@@ -9,23 +9,25 @@ struct TestingScreen: View {
 
     var body: some View {
         VStack {
-            HStack(alignment: .bottom) {
-                VStack(alignment: .leading) {
-                    Text(verbatim: localizedDateString)
-                        .font(.headline)
-                        .foregroundStyle(.secondary)
+            HStack {
+                Text(verbatim: localizedDateString)
+                    .font(.footnote) // iPad font size; iPhone might be .headline
+                    .fontWeight(.bold)
+                    .foregroundStyle(.secondary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
 
-                    Text(
-                        String(
-                            localized: "testing_screen_greeting_title",
-                            defaultValue: "Testing",
-                            table: "TestingScreen",
-                            comment: "The title on the Testing Screen."
-                        )
+            HStack(alignment: .bottom) {
+                Text(
+                    String(
+                        localized: "testing_screen_greeting_title",
+                        defaultValue: "Today",
+                        table: "TestingScreen",
+                        comment: "The title on the Testing Screen."
                     )
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                }
+                )
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
 
                 Spacer()
 
@@ -35,7 +37,7 @@ struct TestingScreen: View {
                 ) {
                     Image(systemName: "person.crop.circle")
                         .font(.largeTitle)
-                        .imageScale(.large)
+//                        .imageScale(.large) // TODO: Check iPhone
                 }
             }
             .frame(maxWidth: .infinity)
@@ -77,7 +79,7 @@ struct TestingScreen: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .padding()
+        .padding(32) // iPad padding size
     }
 }
 
