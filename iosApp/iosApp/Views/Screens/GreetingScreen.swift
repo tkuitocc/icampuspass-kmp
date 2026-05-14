@@ -9,7 +9,9 @@ import KMPObservableViewModelSwiftUI
 import Shared
 
 struct GreetingScreen: View {
-    @StateViewModel var viewModel = GreetingScreenViewModel()
+    @StateViewModel var viewModel = GreetingScreenViewModel(
+        userRepository: KoinDependencies().userRepository
+    )
 
     @State private var showContent = false
 
@@ -42,7 +44,7 @@ struct GreetingScreen: View {
                     Text(
                         String(
                             localized: "greeting_screen_greeting_content_text",
-                            defaultValue: "SwiftUI: \(Greeting().greet())",
+                            defaultValue: "SwiftUI: \(viewModel.getGreeting().greet())",
                             table: "GreetingScreen",
                             comment: "The greeting content text on the Greeting Screen."
                         )
