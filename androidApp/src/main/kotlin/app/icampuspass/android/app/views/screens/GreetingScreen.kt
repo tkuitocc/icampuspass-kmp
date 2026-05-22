@@ -32,7 +32,7 @@ import app.icampuspass.shared.generated.resources.compose_multiplatform
 import app.icampuspass.shared.models.Greeting
 import app.icampuspass.shared.viewmodels.GreetingScreenViewModel
 import org.jetbrains.compose.resources.painterResource
-import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun GreetingScreen(

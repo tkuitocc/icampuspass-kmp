@@ -9,7 +9,7 @@ plugins {
 kotlin {
     target {
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_17)
+            jvmTarget = JvmTarget.JVM_17
         }
     }
 }
@@ -63,7 +63,7 @@ dependencies {
     implementation(libs.compose.runtime)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling.preview)
-    implementation(libs.koin.androidx.compose)
+    implementation(libs.koin.compose.viewmodel)
     implementation(libs.kotlinx.serialization.core)
     implementation(projects.shared)
     debugImplementation(libs.compose.ui.tooling)

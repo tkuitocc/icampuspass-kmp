@@ -12,7 +12,7 @@ import androidx.compose.ui.tooling.preview.Wallpapers.RED_DOMINATED_EXAMPLE
 import androidx.compose.ui.tooling.preview.Wallpapers.YELLOW_DOMINATED_EXAMPLE
 import app.icampuspass.android.shared.views.theme.Theme
 import app.icampuspass.shared.viewmodels.MainScreenViewModel
-import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun MainScreen(

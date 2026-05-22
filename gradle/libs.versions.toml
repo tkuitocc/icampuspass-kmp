@@ -1,28 +1,28 @@
 [versions]
-agp = "9.2.0"
+agp = "9.2.1"
 android-compileSdk = "37"
 android-minSdk = "24"
 android-targetSdk = "37"
 androidx-credentials = "1.6.0"
 androidx-glance = "1.2.0-rc01"
-androidx-navigation3 = "1.1.1"
+androidx-navigation3 = "1.1.2"
 androidx-test-espresso = "3.7.0"
 androidx-test-ext = "1.3.0"
-compose-components = "1.10.3"
-compose-foundation = "1.10.3"
+compose-components = "1.11.0"
+compose-foundation = "1.11.0"
 compose-material3 = "1.9.0"
-compose-runtime = "1.10.3"
-compose-ui = "1.10.3"
-composeMultiplatform = "1.10.3"
+compose-runtime = "1.11.0"
+compose-ui = "1.11.0"
+composeMultiplatform = "1.11.0"
 cryptography = "0.6.0"
 junit = "4.13.2"
-kmpNativeCoroutines = "1.0.2"
-kmpObservableViewmodel = "1.0.3"
+kmpNativeCoroutines = "1.0.3"
+kmpObservableViewmodel = "1.0.4"
 koin = "4.2.1"
 kotlin = "2.3.21"
 kotlinx-serialization = "1.11.0"
-ksp = "2.3.4"
-ktor = "3.4.3"
+ktor = "3.5.0"
+maplibre-compose = "0.13.0"
 qrose = "1.1.2"
 sqldelight = "2.3.2"
 
@@ -48,7 +48,7 @@ cryptography-provider-jdk = { group = "dev.whyoleg.cryptography", name = "crypto
 cryptography-provider-openssl3-prebuilt = { group = "dev.whyoleg.cryptography", name = "cryptography-provider-openssl3-prebuilt", version.ref = "cryptography" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 kmp-observable-viewmodel = { group = "com.rickclephas.kmp", name = "kmp-observableviewmodel-core", version.ref = "kmpObservableViewmodel" }
-koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
+koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin" }
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit", version.ref = "kotlin" }
@@ -58,6 +58,7 @@ ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref =
 ktor-client-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" }
 ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+maplibre-compose = { group = "org.maplibre.compose", name = "maplibre-compose", version.ref = "maplibre-compose" }
 qrose = { group = "io.github.alexzhirkevich", name = "qrose", version.ref = "qrose" }
 qrose-oned = { group = "io.github.alexzhirkevich", name = "qrose-oned", version.ref = "qrose" }
 sqldelight-android = { group = "app.cash.sqldelight", name = "android-driver", version.ref = "sqldelight" }
@@ -72,5 +73,4 @@ composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMul
 kmpNativeCoroutines = { id = "com.rickclephas.kmp.nativecoroutines", version.ref = "kmpNativeCoroutines" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }

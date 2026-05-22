@@ -7,7 +7,6 @@ plugins {
     alias(libs.plugins.kmpNativeCoroutines)
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.kotlinxSerialization)
-    alias(libs.plugins.ksp)
     alias(libs.plugins.sqldelight)
 }
 
@@ -17,7 +16,7 @@ kotlin {
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_17)
+            jvmTarget = JvmTarget.JVM_17
         }
         androidResources {
             enable = true
@@ -28,8 +27,7 @@ kotlin {
     }
     listOf(
         iosArm64(),
-        iosSimulatorArm64(),
-        iosX64()
+        iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "Shared"
@@ -64,7 +62,7 @@ kotlin {
         }
         androidMain.dependencies {
             implementation(libs.cryptography.provider.jdk)
-            implementation(libs.koin.androidx.compose)
+            implementation(libs.koin.compose.viewmodel)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.sqldelight.android)
         }
