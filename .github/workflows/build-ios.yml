@@ -11,7 +11,7 @@ jobs:
     runs-on: macOS-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Set up JDK 21
         uses: actions/setup-java@v5
         with:
@@ -20,7 +20,7 @@ jobs:
       - name: Set Xcode version
         run: sudo xcode-select -s /Applications/Xcode_26.0.app/Contents/Developer
       - name: iOS debug build
-        uses: nick-fields/retry@v3
+        uses: nick-fields/retry@v4
         with:
           timeout_minutes: 15
           max_attempts: 5
@@ -39,7 +39,7 @@ jobs:
           path: ./iosApp_debug.ipa
           if-no-files-found: ignore
       - name: iOS release build
-        uses: nick-fields/retry@v3
+        uses: nick-fields/retry@v4
         with:
           timeout_minutes: 15
           max_attempts: 5

@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/rickclephas/KMP-NativeCoroutines.git",
       "state" : {
-        "revision" : "f0d1fc4c10dce943c601114c080d239102b9b566",
-        "version" : "1.0.3-spm-async"
+        "revision" : "7849044a80bbfdd7d61e3a6c8b43381f4269a47b",
+        "version" : "1.0.4-spm-async"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/rickclephas/KMP-ObservableViewModel.git",
       "state" : {
-        "revision" : "efefc9f2192298a89c0b1061fb7d5d955176b507",
-        "version" : "1.0.4"
+        "revision" : "945829ee718aa250dc10eb80b7f8989496d396a8",
+        "version" : "1.0.5"
       }
     }
   ],
