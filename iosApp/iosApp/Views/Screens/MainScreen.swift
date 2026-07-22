@@ -9,7 +9,7 @@ import KMPObservableViewModelSwiftUI
 import Shared
 
 struct MainScreen: View {
-    @StateViewModel var viewModel = MainScreenViewModel()
+    @StateViewModel var viewModel = KoinDependencies.shared.mainScreenViewModel
 
     var body: some View {
     }

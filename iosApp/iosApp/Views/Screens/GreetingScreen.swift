@@ -9,7 +9,7 @@ import KMPObservableViewModelSwiftUI
 import Shared
 
 struct GreetingScreen: View {
-    @StateViewModel var viewModel = GreetingScreenViewModel()
+    @StateViewModel var viewModel = KoinDependencies.shared.greetingScreenViewModel
 
     @State private var showContent = false
 
