@@ -24,7 +24,11 @@ jobs:
         with:
           timeout_minutes: 15
           max_attempts: 5
-          command: cd iosApp && xcodebuild -scheme iosApp -configuration Debug -sdk iphoneos -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED='NO' CODE_SIGNING_REQUIRED='NO' ONLY_ACTIVE_ARCH='NO' SYMROOT=$(pwd)/build clean build
+          command: |
+            cd iosApp
+            xcodebuild -scheme iosApp -configuration Debug -sdk iphoneos -destination 'generic/platform=iOS' SYMROOT=$(pwd)/build clean
+            xcodebuild -downloadPlatform iOS
+            xcodebuild -scheme iosApp -configuration Debug -sdk iphoneos -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED='NO' CODE_SIGNING_REQUIRED='NO' ONLY_ACTIVE_ARCH='NO' SYMROOT=$(pwd)/build build
       - name: iOS generate IPA file
         run: |
           rm -rf Payload
@@ -43,7 +47,11 @@ jobs:
         with:
           timeout_minutes: 15
           max_attempts: 5
-          command: cd iosApp && xcodebuild -scheme iosApp -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED='NO' CODE_SIGNING_REQUIRED='NO' ONLY_ACTIVE_ARCH='NO' SYMROOT=$(pwd)/build clean build
+          command: |
+            cd iosApp
+            xcodebuild -scheme iosApp -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' SYMROOT=$(pwd)/build clean
+            xcodebuild -downloadPlatform iOS
+            xcodebuild -scheme iosApp -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED='NO' CODE_SIGNING_REQUIRED='NO' ONLY_ACTIVE_ARCH='NO' SYMROOT=$(pwd)/build build
       - name: iOS generate IPA file
         run: |
           rm -rf Payload
