@@ -1,7 +1,15 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Click me!" : {
 
+    },
+    "Hello, world!" : {
+
+    },
+    "SwiftUI: %@" : {
+
+    }
   },
   "version" : "1.0"
 }
