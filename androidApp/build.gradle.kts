@@ -53,6 +53,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.glance)
     implementation(libs.androidx.glance.appwidget)
     implementation(libs.androidx.glance.material3)
     implementation(libs.androidx.navigation3.runtime)
@@ -65,6 +66,9 @@ dependencies {
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.koin.compose.viewmodel)
     implementation(libs.kotlinx.serialization.core)
+    implementation(libs.maplibre.compose)
+    implementation(libs.qrose)
+    implementation(libs.qrose.oned)
     implementation(projects.shared)
     debugImplementation(libs.compose.ui.tooling)
     testImplementation(libs.androidx.glance.appwidget.testing)
