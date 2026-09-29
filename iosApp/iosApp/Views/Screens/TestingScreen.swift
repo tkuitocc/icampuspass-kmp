@@ -8,7 +8,7 @@ struct TestingScreen: View {
         .formatted(.dateTime.month(.wide).day().weekday(.wide))
 
     var body: some View {
-        VStack {
+        VStack(spacing: 4) {
             HStack {
                 Text(verbatim: localizedDateString)
                     .let {
@@ -19,7 +19,7 @@ struct TestingScreen: View {
                             $0.font(.headline)
                         }
                     }
-                    .fontWeight(.bold)
+                    .fontWeight(.semibold)
                     .foregroundStyle(.secondary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -88,7 +88,9 @@ struct TestingScreen: View {
         .run {
             switch UIDevice.current.userInterfaceIdiom {
             case .pad:
-                $0.padding(32) // iPad padding size
+                $0
+                    .padding(.horizontal, 22)
+                    .padding(.top, 26)
             default:
                 $0.padding()
             }
