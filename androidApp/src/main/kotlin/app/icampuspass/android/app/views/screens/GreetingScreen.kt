@@ -26,7 +26,7 @@ import androidx.compose.ui.tooling.preview.Wallpapers.BLUE_DOMINATED_EXAMPLE
 import androidx.compose.ui.tooling.preview.Wallpapers.GREEN_DOMINATED_EXAMPLE
 import androidx.compose.ui.tooling.preview.Wallpapers.RED_DOMINATED_EXAMPLE
 import androidx.compose.ui.tooling.preview.Wallpapers.YELLOW_DOMINATED_EXAMPLE
-import app.icampuspass.android.shared.views.theme.Theme
+import app.icampuspass.android.app.views.theme.Theme
 import app.icampuspass.shared.generated.resources.Res
 import app.icampuspass.shared.generated.resources.compose_multiplatform
 import app.icampuspass.shared.models.Greeting
