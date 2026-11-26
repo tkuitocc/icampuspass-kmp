@@ -1,0 +1,118 @@
+// Standard imports
+import SwiftUI
+
+struct TestingScreen: View {
+    @State private var showContent: Bool = false
+
+    let localizedDateString: String = Date()
+        .formatted(.dateTime.month(.wide).day().weekday(.wide))
+
+    var body: some View {
+        GeometryReader { geometry in
+            let screenWidth = geometry.size.width
+            
+            let optimalHorizontalPadding: CGFloat =
+            screenWidth < 380 ? 16 : (
+                screenWidth < 500 ? 20 :  (
+                    screenWidth < 768 ? 32 : (
+                        screenWidth < 1024 ? 34 : 52
+                    )
+                )
+            )
+            
+            ScrollView {
+                VStack(spacing: 4) {
+                    HStack {
+                        Text(verbatim: localizedDateString)
+                            .let {
+                                switch UIDevice.current.userInterfaceIdiom {
+                                case .pad:
+                                    $0.font(.footnote) // iPad font size; iPhone might be .headline
+                                default:
+                                    $0.font(.headline)
+                                }
+                            }
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.secondary)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    HStack(alignment: .bottom) {
+                        Text(
+                            String(
+                                localized: "testing_screen_greeting_title",
+                                defaultValue: "Today",
+                                table: "TestingScreen",
+                                comment: "The title on the Testing Screen."
+                            )
+                        )
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        
+                        Spacer()
+                        
+                        Button(
+                            action: {}
+                        ) {
+                            Image(systemName: "person.crop.circle")
+                                .font(.largeTitle)
+                            //                        .imageScale(.large) // TODO: Check iPhone
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    
+                    Button(
+                        action: {
+                            withAnimation {
+                                showContent = !showContent
+                            }
+                        }
+                    ) {
+                        Text(
+                            String(
+                                localized: "testing_screen_greeting_button_label",
+                                defaultValue: "Click me!",
+                                table: "TestingScreen",
+                                comment: "The toggle button label for greeting content on the Testing Screen."
+                            )
+                        )
+                    }
+                    .buttonStyle(.borderedProminent)
+                    
+                    if showContent {
+                        VStack(spacing: 16) {
+                            Image(systemName: "swift")
+                                .font(.system(size: 200))
+                                .foregroundStyle(.tint)
+                            
+                            Text(
+                                String(
+                                    localized: "testing_screen_greeting_content_text",
+                                    defaultValue: "SwiftUI: Hello, world!",
+                                    table: "TestingScreen",
+                                    comment: "The greeting content text on the Testing Screen."
+                                )
+                            )
+                        }
+                        .transition(.move(edge: .top).combined(with: .opacity))
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                .run {
+                    switch UIDevice.current.userInterfaceIdiom {
+                    case .pad:
+                        $0
+                            .padding(.horizontal, optimalHorizontalPadding)
+                            .padding(.top, 26)
+                    default:
+                        $0.padding()
+                    }
+                }
+            }
+        }
+    }
+}
+
+#Preview {
+    TestingScreen()
+}
